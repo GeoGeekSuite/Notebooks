@@ -1,0 +1,13 @@
+---
+# tasks file for Notebooks
+- name: Create samples folder
+  file:
+    path: '{{ storage_base }}/jupyter/samples'
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+- name: Copy sample notebooks to jupyter folder
+  copy:
+    src: '{{ role_base }}/geogeeksuite.notebooks/files/'
+    dest: '{{ storage_base }}/jupyter/samples'
+    remote_src: true
